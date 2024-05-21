@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "861343164583",
+    "project_id": "mionder-mobile",
+    "storage_bucket": "mionder-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861343164583:android:ab54db13bf7aceb41d1382",
+        "android_client_info": {
+          "package_name": "com.mionder.mionder_mobile_get"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQiuzMhbF_FagtM69hYIRhxwPu9IVj1U4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
