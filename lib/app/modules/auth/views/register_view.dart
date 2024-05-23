@@ -22,24 +22,33 @@ class RegisterView extends GetView<AuthController> {
       },
       child: Scaffold(
         body: ListView(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
           children: [
             SizedBox(
-              height: Get.height * 0.2,
+              height: Get.height * 0.1,
             ),
-            Text(
-              'Masuk',
-              style: Theme.of(context)
-                  .textTheme
-                  .titleSmall
-                  ?.copyWith(color: black600, fontSize: 24),
-            ),
-            Text(
-              'Selamat datang kembali!',
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyMedium
-                  ?.copyWith(color: black600),
+            Column(
+              children: [
+                Image.asset(
+                  "assets/images/mionder_logo.png",
+                  width: 200,
+                ),
+                SizedBox(height: 15),
+                Text(
+                  'Sign Up',
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleSmall
+                      ?.copyWith(color: black600, fontSize: 25),
+                ),
+                Text(
+                  'Create your account here!',
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium
+                      ?.copyWith(color: black600, fontSize: 18),
+                ),
+              ],
             ),
             const SizedBox(
               height: 30,
@@ -47,7 +56,7 @@ class RegisterView extends GetView<AuthController> {
             Padding(
               padding: const EdgeInsets.only(bottom: 15),
               child: MyFormInput(
-                hintText: 'Masukkan nama anda',
+                hintText: 'Name',
                 prefixIcon: Padding(
                   padding: const EdgeInsets.all(12),
                   child: AppImage.svg(
@@ -61,7 +70,7 @@ class RegisterView extends GetView<AuthController> {
             Padding(
               padding: const EdgeInsets.only(bottom: 15),
               child: MyFormInput(
-                hintText: 'Masukkan Email',
+                hintText: 'Email',
                 prefixIcon: Padding(
                   padding: const EdgeInsets.all(12),
                   child: AppImage.svg(
@@ -74,7 +83,7 @@ class RegisterView extends GetView<AuthController> {
             ),
             Obx(
               () => MyFormInput(
-                hintText: 'Masukkan Password',
+                hintText: 'Password',
                 prefixIcon: Padding(
                   padding: const EdgeInsets.all(12),
                   child: AppImage.svg(
@@ -119,12 +128,12 @@ class RegisterView extends GetView<AuthController> {
                     ? const SizedBox(
                         height: 20,
                         width: 20,
-                        child: CircularProgressIndicator(color: white),
+                        child: CircularProgressIndicator(color: white,),
                       )
                     : const Text(
-                        "Daftar",
+                        "Sign Up",
                         style: TextStyle(
-                          color: white,
+                          color: Color.fromARGB(255, 255, 250, 176),
                           fontWeight: FontWeight.w700,
                           fontSize: 14,
                         ),
@@ -134,20 +143,20 @@ class RegisterView extends GetView<AuthController> {
             const SizedBox(height: 10),
             Center(
               child: Text(
-                'Atau',
+                'or',
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
             ),
             const SizedBox(height: 10),
             MyButton(
-              color: primaryColor,
+              color: Color(0xff004AAD),
               onTap: () {
-                Get.toNamed(Routes.REGISTER);
+                Get.toNamed(Routes.LOGIN);
               },
               child: const Text(
-                "Masuk",
+                "Sign In",
                 style: TextStyle(
-                  color: white,
+                  color: Color.fromARGB(255, 255, 250, 176),
                   fontWeight: FontWeight.w700,
                   fontSize: 14,
                 ),

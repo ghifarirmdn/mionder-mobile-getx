@@ -19,7 +19,7 @@ class HomeView extends GetView<HomeController> {
         const SizedBox(
           height: 24,
         ),
-        const Text("Good Evening,",
+        const Text("Welcome,",
             style: TextStyle(
               fontSize: 26,
               fontWeight: FontWeight.normal,
@@ -395,7 +395,7 @@ class HomeView extends GetView<HomeController> {
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xffD2E0FB),
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 45, vertical: 20),
+                    const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),

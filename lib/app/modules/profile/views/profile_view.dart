@@ -38,7 +38,7 @@ class ProfileView extends GetView<ProfileController> {
                       Icons.person,
                       size: 35,
                     ),
-                    const SizedBox(width: 10),
+                    const SizedBox(width: 15),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,

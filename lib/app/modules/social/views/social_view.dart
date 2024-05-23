@@ -49,7 +49,7 @@ class SocialView extends GetView<SocialController> {
                             child: Row(
                               children: [
                                 const Icon(Icons.person),
-                                const SizedBox(width: 10),
+                                const SizedBox(width: 15),
                                 Flexible(
                                   child: Column(
                                     crossAxisAlignment:

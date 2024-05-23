@@ -10,12 +10,12 @@ class NotificationView extends GetView<NotificationController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('NotificationView'),
+        title: const Text('Notifications'),
         centerTitle: true,
       ),
       body: const Center(
         child: Text(
-          'NotificationView is working',
+          'Notifications',
           style: TextStyle(fontSize: 20),
         ),
       ),

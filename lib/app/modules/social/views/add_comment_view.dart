@@ -50,7 +50,7 @@ class AddCommentView extends GetView<SocialController> {
                       controller.commentController.text,
                     );
                   },
-                  color: primaryColor,
+                  color: Color(0xff004AAD),
                   child: const Text(
                     "Submit",
                     style: TextStyle(

@@ -117,7 +117,7 @@ class ReservationView extends GetView<ReservationController> {
                                     );
                                   },
                                   child: const Text(
-                                    "Boook Now",
+                                    "Book Now",
                                     style: TextStyle(
                                       color: Color.fromARGB(
                                           255, 255, 250, 176), // Warna teks

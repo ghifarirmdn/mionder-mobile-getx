@@ -130,7 +130,7 @@ class ConsultanCallView extends GetView<ReservationController> {
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor:
-                                    primaryColor, // Set the button color here
+                                    Color(0xff004AAD), // Set the button color here
                               ),
                               child: const Text(
                                 'Submit',

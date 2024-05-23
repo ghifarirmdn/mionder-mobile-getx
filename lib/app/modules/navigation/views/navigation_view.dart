@@ -108,7 +108,7 @@ class NavigationView extends GetView<NavigationController> {
                       Icons.people_outline,
                       color: controller.tabIndex == 3 ? primaryColor : black400,
                     ),
-                    label: 'Social',
+                    label: 'Reviews',
                   ),
                 ],
               ),

@@ -15,7 +15,7 @@ class EditProfileView extends GetView<ProfileController> {
         title: const Text("Edit Profile"),
       ),
       body: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 24),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 25),
         children: [
           Column(
             children: [
