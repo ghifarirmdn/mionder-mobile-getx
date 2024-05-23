@@ -15,6 +15,7 @@ abstract class Routes {
   static const REGISTER = _Paths.REGISTER;
   static const CONSULTAN_CALL = _Paths.CONSULTAN_CALL;
   static const ADD_COMMENT = _Paths.ADD_COMMENT;
+  static const CHANGE_PASSWORD = _Paths.CHANGE_PASSWORD;
 }
 
 abstract class _Paths {
@@ -31,4 +32,5 @@ abstract class _Paths {
   static const REGISTER = '/register';
   static const CONSULTAN_CALL = '/consultan-call';
   static const ADD_COMMENT = '/add-comment';
+  static const CHANGE_PASSWORD = '/change-password';
 }

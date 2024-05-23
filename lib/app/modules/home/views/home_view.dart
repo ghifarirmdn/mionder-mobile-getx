@@ -361,7 +361,7 @@ class HomeView extends GetView<HomeController> {
           children: [
             ElevatedButton(
               onPressed: () {
-                navigationController.changeTabIndex(1);
+                navigationController.changeTabIndex(2);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xffD2E0FB),

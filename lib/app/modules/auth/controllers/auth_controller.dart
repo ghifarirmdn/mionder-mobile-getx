@@ -23,14 +23,28 @@ class AuthController extends GetxController {
     }
   }
 
-  Future<void> register(String name, String email, String password) async {
+  Future<void> register(
+    String name,
+    String email,
+    String password,
+    String passwordConfirmation,
+  ) async {
     try {
-      UserCredential result = await auth.createUserWithEmailAndPassword(
-          email: email, password: password);
+      if (password != passwordConfirmation) {
+        MySnakebar.failure(
+          title: "Error!",
+          subtitle: "Password dan password konfirmasi harus sama!",
+        );
+      } else {
+        UserCredential result = await auth.createUserWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
 
-      User? user = result.user;
-      user?.updateDisplayName(name);
-      Get.toNamed(Routes.NAVIGATION);
+        User? user = result.user;
+        user?.updateDisplayName(name);
+        Get.toNamed(Routes.NAVIGATION);
+      }
     } on FirebaseAuthException catch (e) {
       MySnakebar.failure(title: "Error!", subtitle: e.message.toString());
     }

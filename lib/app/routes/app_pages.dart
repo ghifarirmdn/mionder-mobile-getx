@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:mionder_mobile_get/app/modules/profile/views/change_password_view.dart';
 import 'package:mionder_mobile_get/app/modules/auth/views/register_view.dart';
 import 'package:mionder_mobile_get/app/modules/reservation/views/consultan_call_view.dart';
 import 'package:mionder_mobile_get/app/modules/social/views/add_comment_view.dart';
@@ -88,6 +89,11 @@ class AppPages {
       name: _Paths.ADD_COMMENT,
       page: () => const AddCommentView(),
       binding: SocialBinding(),
+    ),
+    GetPage(
+      name: _Paths.CHANGE_PASSWORD,
+      page: () => const ChangePasswordView(),
+      binding: ProfileBinding(),
     ),
   ];
 }

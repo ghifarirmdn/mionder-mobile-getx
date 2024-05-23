@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:mionder_mobile_get/app/shared/import/main_import.dart';
 import 'package:mionder_mobile_get/app/shared/widgets/button.dart';
 import 'package:mionder_mobile_get/app/shared/widgets/form_input.dart';
+import 'package:mionder_mobile_get/app/shared/widgets/label_form.dart';
 
 import '../controllers/social_controller.dart';
 
@@ -24,6 +25,7 @@ class AddCommentView extends GetView<SocialController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const LabelForm(text: "Name"),
                 MyFormInput(
                   hintText: 'Enter your name',
                   prefixIcon: const Padding(
@@ -32,7 +34,7 @@ class AddCommentView extends GetView<SocialController> {
                   ),
                   controller: controller.nameController,
                 ),
-                const SizedBox(height: 20),
+                const LabelForm(text: "Comment"),
                 MyFormInput(
                   hintText: 'Enter your comment',
                   maxLines: 3,

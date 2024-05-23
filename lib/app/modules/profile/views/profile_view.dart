@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mionder_mobile_get/app/modules/auth/controllers/auth_controller.dart';
 import 'package:mionder_mobile_get/app/modules/navigation/controllers/navigation_controller.dart';
 import 'package:mionder_mobile_get/app/routes/app_pages.dart';
 import 'package:mionder_mobile_get/app/shared/import/main_import.dart';
+import 'package:mionder_mobile_get/app/shared/import/packages_import.dart';
 
 import '../controllers/profile_controller.dart';
 
@@ -34,9 +37,18 @@ class ProfileView extends GetView<ProfileController> {
               children: [
                 Row(
                   children: [
-                    const Icon(
-                      Icons.person,
-                      size: 35,
+                    Container(
+                      width: 50,
+                      height: 50,
+                      clipBehavior: Clip.antiAlias,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                      ),
+                      child: user?.photoURL == null
+                          ? AppImage.png('user')
+                          : Image.file(
+                              File(user!.photoURL.toString()),
+                            ),
                     ),
                     const SizedBox(width: 15),
                     Column(
@@ -129,19 +141,95 @@ class ProfileView extends GetView<ProfileController> {
             ),
           ),
           const SizedBox(height: 15),
+          Row(
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Get.toNamed(Routes.CHANGE_PASSWORD);
+                },
+                child: Row(
+                  children: [
+                    AppImage.svg(
+                      "ic-password",
+                      color: black,
+                      height: 20,
+                      width: 20,
+                    ),
+                    const SizedBox(width: 10),
+                    const Text(
+                      "Change Password",
+                      style: TextStyle(
+                        fontSize: 15,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 15),
+          Container(
+            padding: const EdgeInsets.all(0.5),
+            decoration: const BoxDecoration(
+              color: Colors.grey,
+            ),
+          ),
+          const SizedBox(height: 15),
           GestureDetector(
             onTap: () {
-              authController.logout();
-              Get.offAllNamed(Routes.LOGIN);
+              Get.dialog(
+                Theme(
+                  data: ThemeData(
+                    cardColor: white,
+                  ),
+                  child: AlertDialog(
+                    alignment: Alignment.center,
+                    title: const Text(
+                      "Are you sure to logout from this account?",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                    actions: [
+                      TextButton(
+                        child: const Text(
+                          "No",
+                          style: TextStyle(
+                            color: black700,
+                          ),
+                        ),
+                        onPressed: () => Get.back(),
+                      ),
+                      TextButton(
+                        child: const Text(
+                          "Yes",
+                          style: TextStyle(
+                            color: primaryColor,
+                          ),
+                        ),
+                        onPressed: () {
+                          authController.logout();
+                          Get.offAllNamed(Routes.LOGIN);
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              );
             },
             child: const Row(
               children: [
-                Icon(Icons.logout),
+                Icon(
+                  Icons.logout,
+                  color: red600,
+                ),
                 SizedBox(width: 10),
                 Text(
                   "Log Out",
                   style: TextStyle(
                     fontSize: 15,
+                    color: red600,
                   ),
                 ),
               ],

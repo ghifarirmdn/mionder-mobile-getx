@@ -4,6 +4,7 @@ import 'package:mionder_mobile_get/app/routes/app_pages.dart';
 import 'package:mionder_mobile_get/app/shared/import/main_import.dart';
 import 'package:mionder_mobile_get/app/shared/widgets/button.dart';
 import 'package:mionder_mobile_get/app/shared/widgets/form_input.dart';
+import 'package:mionder_mobile_get/app/shared/widgets/label_form.dart';
 
 import '../controllers/auth_controller.dart';
 
@@ -49,23 +50,19 @@ class LoginView extends GetView<AuthController> {
                 ),
               ],
             ),
-            const SizedBox(
-              height: 30,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 15),
-              child: MyFormInput(
-                hintText: 'Email',
-                prefixIcon: Padding(
-                  padding: const EdgeInsets.all(12),
-                  child: AppImage.svg(
-                    'ic-mail',
-                    color: black400,
-                  ),
+            const LabelForm(text: "Email"),
+            MyFormInput(
+              hintText: 'Email',
+              prefixIcon: Padding(
+                padding: const EdgeInsets.all(12),
+                child: AppImage.svg(
+                  'ic-mail',
+                  color: black400,
                 ),
-                controller: emailController,
               ),
+              controller: emailController,
             ),
+            const LabelForm(text: "Password"),
             Obx(
               () => MyFormInput(
                 hintText: 'Password',
@@ -98,7 +95,7 @@ class LoginView extends GetView<AuthController> {
             ),
             Obx(
               () => MyButton(
-                color: primaryColor,
+                color: const Color(0xff004AAD),
                 onTap: () {
                   // FocusScope.of(context).unfocus();
                   // isLoading.value = true;
@@ -135,7 +132,7 @@ class LoginView extends GetView<AuthController> {
             ),
             const SizedBox(height: 10),
             MyButton(
-              color: Color(0xff004AAD),
+              color: primaryColor,
               onTap: () {
                 Get.toNamed(Routes.REGISTER);
               },

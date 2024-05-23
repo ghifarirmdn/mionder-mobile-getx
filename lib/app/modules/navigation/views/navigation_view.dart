@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +9,7 @@ import 'package:mionder_mobile_get/app/modules/reservation/views/reservation_vie
 import 'package:mionder_mobile_get/app/modules/social/views/social_view.dart';
 import 'package:mionder_mobile_get/app/modules/tracker/views/tracker_view.dart';
 import 'package:mionder_mobile_get/app/routes/app_pages.dart';
+import 'package:mionder_mobile_get/app/shared/import/main_import.dart';
 import 'package:mionder_mobile_get/app/shared/styles/app_colors.dart';
 
 import '../controllers/navigation_controller.dart';
@@ -30,9 +33,18 @@ class NavigationView extends GetView<NavigationController> {
                 onTap: () {
                   Get.toNamed(Routes.PROFILE);
                 },
-                child: const Icon(
-                  Icons.person,
-                  size: 35,
+                child: Container(
+                  width: 50,
+                  height: 50,
+                  clipBehavior: Clip.antiAlias,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                  ),
+                  child: user?.photoURL == null
+                      ? AppImage.png('user')
+                      : Image.file(
+                          File(user!.photoURL.toString()),
+                        ),
                 ),
               ),
               GestureDetector(
@@ -53,8 +65,8 @@ class NavigationView extends GetView<NavigationController> {
               index: controller.tabIndex,
               children: const [
                 HomeView(),
-                TrackerView(),
                 ReservationView(),
+                TrackerView(),
                 SocialView(),
               ],
             );
@@ -91,17 +103,17 @@ class NavigationView extends GetView<NavigationController> {
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(
-                      Icons.history,
+                      Icons.domain_verification,
                       color: controller.tabIndex == 1 ? primaryColor : black400,
                     ),
-                    label: 'Tracker',
+                    label: 'Reservation',
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(
-                      Icons.domain_verification,
+                      Icons.history,
                       color: controller.tabIndex == 2 ? primaryColor : black400,
                     ),
-                    label: 'Reservation',
+                    label: 'Tracker',
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(
