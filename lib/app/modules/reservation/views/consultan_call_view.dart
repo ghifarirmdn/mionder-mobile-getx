@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mionder_mobile_get/app/modules/reservation/controllers/reservation_controller.dart';
 import 'package:mionder_mobile_get/app/shared/import/main_import.dart';
@@ -11,15 +12,9 @@ class ConsultanCallView extends GetView<ReservationController> {
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser;
     final formKey = GlobalKey<FormState>();
 
-    // void submitForm() {
-    //   if (formKey.currentState!.validate() && selectedPaymentMethod != null) {
-    //     formKey.currentState!.save();
-    //     // Handle form submission logic here
-    //     print('Selected Payment Method: $selectedPaymentMethod');
-    //   }
-    // }
     return FutureBuilder<DocumentSnapshot<Object?>>(
       future: controller.getDoctorById(Get.arguments),
       builder: (context, snapshot) {
@@ -126,11 +121,11 @@ class ConsultanCallView extends GetView<ReservationController> {
                                   data["name"],
                                   controller.selectedPaymentMethod.value,
                                   data["specialist"],
+                                  user!.uid.toString(),
                                 );
                               },
                               style: ElevatedButton.styleFrom(
-                                backgroundColor:
-                                    Color(0xff004AAD), // Set the button color here
+                                backgroundColor: const Color(0xff004AAD),
                               ),
                               child: const Text(
                                 'Submit',

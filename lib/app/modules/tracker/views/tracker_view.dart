@@ -1,56 +1,26 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
 import '../controllers/tracker_controller.dart';
 
-// class Schedule {
-//   String name, profession, jadwal, jam, result;
-//   Schedule({
-//     required this.name,
-//     required this.profession,
-//     required this.jadwal,
-//     required this.jam,
-//     required this.result,
-//   });
-// }
-
-// List<Schedule> scheduleList = [
-//   Schedule(
-//       name: "Mark Lee, S.Psi., M.Psi., Psikolog",
-//       profession: "Psychologist",
-//       jadwal: "Thursday, 1st February 2024",
-//       jam: "09.00",
-//       result: "Result"),
-//   Schedule(
-//       name: "dr. Lee Jeno, Sp.KJ",
-//       profession: "Psychiatrist",
-//       jadwal: "Friday, 1st March 2024",
-//       jam: "10.00",
-//       result: "Result"),
-//   Schedule(
-//       name: "Na Jaemin, S.Psi., M.Psi., Psikolog",
-//       profession: "Psychologist",
-//       jadwal: "Monday, 2nd January 2024",
-//       jam: "09.00",
-//       result: "Result"),
-//   Schedule(
-//       name: "dr. Huang Renjun, Sp.KJ",
-//       profession: "Psychiatrist",
-//       jadwal: "Tuesday, 1st December 2023",
-//       jam: "10.00",
-//       result: "Result"),
-// ];
-
 class TrackerView extends GetView<TrackerController> {
   const TrackerView({super.key});
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser;
     return StreamBuilder<QuerySnapshot<Object?>>(
-      stream: controller.getTracker(),
+      stream: FirebaseFirestore.instance
+          .collection("history")
+          .where("uid", isEqualTo: user!.uid)
+          .snapshots(),
       builder: (context, snapshot) {
         final listTracker = snapshot.data!.docs;
+        log(listTracker.toString());
         if (snapshot.connectionState == ConnectionState.active) {
           return ListView(
             children: [

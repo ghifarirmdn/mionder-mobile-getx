@@ -30,13 +30,19 @@ class ReservationController extends GetxController {
   }
 
   Future<void> addTracker(
-      String date, String doctorName, String payment, String specialist) {
+    String date,
+    String doctorName,
+    String payment,
+    String specialist,
+    String uid,
+  ) {
     CollectionReference tracker = firestore.collection('history');
     return tracker.add({
       'date': date,
       'doctor_name': doctorName,
       'payment': payment,
       'specialist': specialist,
+      'uid': uid,
     }).then((value) {
       // Get.back();
       // MySnakebar.success(
